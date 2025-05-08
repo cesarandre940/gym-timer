@@ -1,0 +1,37 @@
+---
+---
+
+<div class="space-y-4">
+  <h2 class="text-xl font-bold text-center">Stopwatch</h2>
+  <div class="text-center text-5xl font-mono py-6" id="stopwatch-display">00:00:00</div>
+  <div class="flex justify-between gap-4">
+    <button id="start-stopwatch" class="flex-1 bg-green-500 hover:bg-green-600 text-white p-2 rounded">Start</button>
+    <button id="reset-stopwatch" class="flex-1 bg-red-500 hover:bg-red-600 text-white p-2 rounded">Reset</button>
+  </div>
+
+  <script type="module">
+    let stopwatchTime = 0;
+    let stopwatchInterval;
+    const display = document.getElementById("stopwatch-display");
+    const startBtn = document.getElementById("start-stopwatch");
+    const resetBtn = document.getElementById("reset-stopwatch");
+
+    startBtn.addEventListener("click", () => {
+      if (stopwatchInterval) return;
+      stopwatchInterval = setInterval(() => {
+        stopwatchTime++;
+        const hrs = String(Math.floor(stopwatchTime / 3600)).padStart(2, "0");
+        const mins = String(Math.floor((stopwatchTime % 3600) / 60)).padStart(2, "0");
+        const secs = String(stopwatchTime % 60).padStart(2, "0");
+        display.textContent = `${hrs}:${mins}:${secs}`;
+      }, 1000);
+    });
+
+    resetBtn.addEventListener("click", () => {
+      clearInterval(stopwatchInterval);
+      stopwatchInterval = null;
+      stopwatchTime = 0;
+      display.textContent = "00:00:00";
+    });
+  </script>
+</div>

@@ -1,11 +1,46 @@
 ---
 import Timer from '../components/Timer.astro';
 import Layout from '../layouts/Layout.astro';
+import StopWatch from '../components/StopWatch.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Timer />
+<Layout>  
+	  <div class="max-w-md w-full mx-auto mt-6 bg-gray-800 p-4 rounded-xl shadow space-y-4">
+   <div class="flex space-x-2">
+  <button id="tab-hiit" class="flex-1 bg-blue-500 text-white p-2 rounded cursor-pointer">HIIT</button>
+  <button id="tab-stopwatch" class="flex-1 bg-gray-700 text-white p-2 rounded cursor-pointer">Stopwatch</button>
+</div>
+
+	 <div id="hiit-tab" class="tab-content block">
+      <Timer />
+    </div>
+    <div id="stopwatch-tab" class="tab-content hidden">
+      <StopWatch />
+    </div>
+  </div>
+
+    <script type="module">
+    const tabHiit = document.getElementById('tab-hiit');
+    const tabStopwatch = document.getElementById('tab-stopwatch');
+    const hiitTab = document.getElementById('hiit-tab');
+    const stopwatchTab = document.getElementById('stopwatch-tab');
+
+    tabHiit.addEventListener('click', () => {
+      hiitTab.classList.remove('hidden');
+      stopwatchTab.classList.add('hidden');
+      tabHiit.classList.add('bg-blue-500');
+      tabStopwatch.classList.remove('bg-blue-500');
+    });
+
+    tabStopwatch.addEventListener('click', () => {
+      stopwatchTab.classList.remove('hidden');
+      hiitTab.classList.add('hidden');
+      tabStopwatch.classList.add('bg-blue-500');
+      tabHiit.classList.remove('bg-blue-500');
+    });
+  </script>
+	
 </Layout>
