@@ -1,0 +1,113 @@
+---
+
+
+---
+
+<html lang="en">
+  <body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-4">
+    <div class="max-w-md w-full bg-gray-800 p-6 rounded-xl shadow-lg space-y-4">
+      <h1 class="text-2xl font-bold text-center">HIIT Timer</h1>
+      <div class="container rounded-md  bg-gray-700">
+      <div class="text-center text-5xl font-mono py-6" id="display">00:00</div>
+      <div id="status" class="text-center text-lg text-gray-400 mt-2"></div>
+    </div>
+      <form id="config-form" class="grid grid-cols-2 gap-4 text-lg">
+        <label>
+          Work (sec)
+          <input type="number" id="work" value="20" class="w-full p-2 rounded bg-gray-700 text-white" />
+        </label>
+        <label>
+          Rest (sec)
+          <input type="number" id="rest" value="10" class="w-full p-2 rounded bg-gray-700 text-white" />
+        </label>
+        <label class="col-span-2">
+          Rounds
+          <input type="number" id="rounds" value="5" class="w-full p-2 rounded bg-gray-700 text-white" />
+        </label>
+      </form>
+
+      
+      <div class="flex justify-between gap-4">
+        <button id="start" class="flex-1 bg-green-500 hover:bg-green-600 text-white p-2 rounded">Start</button>
+        <button id="reset" class="flex-1 bg-red-500 hover:bg-red-600 text-white p-2 rounded">Reset</button>
+      </div>
+      
+    </div>
+
+    <script type="module">
+      let timer;
+      let phase = 'work';
+      let seconds = 0;
+      let currentRound = 1;
+    
+      const beep = new Audio('/beep.mp3'); 
+    
+      const display = document.getElementById('display');
+      const status = document.getElementById('status');
+      const startBtn = document.getElementById('start');
+      const resetBtn = document.getElementById('reset');
+    
+      startBtn.addEventListener('click', () => {
+        const work = parseInt(document.getElementById('work').value);
+        const rest = parseInt(document.getElementById('rest').value);
+        const rounds = parseInt(document.getElementById('rounds').value);
+    
+        if (!work || !rest || !rounds) return;
+    
+        startBtn.disabled = true;
+        runTimer(work, rest, rounds);
+      });
+    
+      resetBtn.addEventListener('click', () => {
+        clearInterval(timer);
+        seconds = 0;
+        currentRound = 1;
+        phase = 'work';
+        updateDisplay(0);
+        status.textContent = '';
+        startBtn.disabled = false;
+      });
+    
+      function runTimer(work, rest, rounds) {
+        seconds = work;
+        phase = 'work';
+        updateDisplay(seconds);
+        beep.play();
+        status.textContent = `Round ${currentRound} - Work`;
+    
+        timer = setInterval(() => {
+          seconds--;
+          updateDisplay(seconds);
+    
+          if (seconds <= 0) {
+            beep.play();
+    
+            if (phase === 'work') {
+              phase = 'rest';
+              seconds = rest;
+              status.textContent = `Round ${currentRound} - Rest`;
+            } else {
+              currentRound++;
+              if (currentRound > rounds) {
+                clearInterval(timer);
+                status.textContent = `Workout complete! 🎉`;
+                startBtn.disabled = false;
+                return;
+              }
+              phase = 'work';
+              seconds = work;
+              status.textContent = `Round ${currentRound} - Work`;
+            }
+          }
+        }, 1000);
+      }
+    
+      function updateDisplay(sec) {
+        const m = String(Math.floor(sec / 60)).padStart(2, '0');
+        const s = String(sec % 60).padStart(2, '0');
+        display.textContent = `${m}:${s}`;
+      }
+    </script>
+    
+  </body>
+</html>
