@@ -1,48 +1,28 @@
-# Astro Starter Kit: Basics
+🏋️‍♂️ HIIT & Stopwatch Timer App
+A responsive, customizable timer built with Astro and Tailwind CSS—perfect for High-Intensity Interval Training (HIIT), circuit workouts, rest intervals, and general time tracking. This web app provides clear visual and audio cues to keep your training on track and focused.
 
-```sh
-npm create astro@latest -- --template basics
-```
+<Title>HIIT Timer</Title>
+<img width="1001" alt="image" src="https://github.com/user-attachments/assets/c77170c8-f2ab-453a-936c-e8b011bcdb9b" />
+<Title>StopWatch Timer</Title>
+<img width="1001" alt="Screenshot 2025-05-08 at 4 01 24 PM" src="https://github.com/user-attachments/assets/1da35717-e215-4f1a-924a-f30cfb4e2533" />
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+✨ Features
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+🔁 HIIT Timer – Set work/rest durations and rounds
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+⏱️ Stopwatch – Simple timer with Start, Pause, and Reset
 
-## 🚀 Project Structure
+🔊 Audio alerts to indicate phase transitions
 
-Inside of your Astro project, you'll see the following folders and files:
+📱 Fully responsive UI for mobile, tablet, and desktop
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+⚡ Fast and lightweight with Astro's modern web architecture
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+🎨 Clean and modern styling with Tailwind CSS
 
-## 🧞 Commands
+🧩 Tech Stack
+Astro – Static site builder
 
-All commands are run from the root of the project, from a terminal:
+Tailwind CSS – Utility-first styling
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Vanilla JavaScript for interactivity
